@@ -148,7 +148,7 @@ fun LoginContent(navController: NavHostController, paddingValues: PaddingValues,
                             .height(50.dp),
                         text = "LOGIN",
                         onClick = {
-                            vm.validateForm()
+                            vm.login()
                         },
                     )
                     Spacer(modifier = Modifier.height(10.dp))
