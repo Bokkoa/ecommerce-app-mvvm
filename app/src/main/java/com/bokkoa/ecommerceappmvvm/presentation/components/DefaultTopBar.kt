@@ -23,7 +23,7 @@ fun DefaultTopBar(
     TopAppBar(
         title = {
             Text(
-                text = "Sign Up",
+                text = title,
                 fontSize = 19.sp,
             )
         },

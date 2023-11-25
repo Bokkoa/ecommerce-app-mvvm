@@ -30,7 +30,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -39,7 +39,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
         allWarningsAsErrors = false
     }
     buildFeatures {
@@ -87,6 +87,9 @@ dependencies {
     // GSON
     implementation("com.google.code.gson:gson:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // MOSHI
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
 }
 
 kapt {

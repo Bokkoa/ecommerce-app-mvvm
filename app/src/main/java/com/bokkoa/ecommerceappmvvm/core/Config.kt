@@ -1,5 +1,5 @@
 package com.bokkoa.ecommerceappmvvm.core
 
 object Config {
-    const val BASE_URL = "http://192.168.100.2:3000/auth/login/"
+    const val BASE_URL = "http://localhost:3000/"
 }

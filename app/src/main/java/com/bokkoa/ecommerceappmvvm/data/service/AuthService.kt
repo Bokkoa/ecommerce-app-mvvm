@@ -1,6 +1,6 @@
 package com.bokkoa.ecommerceappmvvm.data.service
 
-import com.bokkoa.ecommerceappmvvm.domain.model.User
+import com.bokkoa.ecommerceappmvvm.domain.model.AuthResponse
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -13,5 +13,5 @@ interface AuthService {
     suspend fun login(
         @Field("email") email: String,
         @Field("Password") password: String,
-    ): Response<User>
+    ): Response<AuthResponse>
 }

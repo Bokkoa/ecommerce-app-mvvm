@@ -5,9 +5,9 @@ import android.util.Patterns
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bokkoa.ecommerceappmvvm.domain.model.User
+import com.bokkoa.ecommerceappmvvm.domain.model.AuthResponse
 import com.bokkoa.ecommerceappmvvm.domain.usecase.auth.AuthUseCase
-import com.bokkoa.ecommerceappmvvm.domain.util.Response
+import com.bokkoa.ecommerceappmvvm.domain.util.ResourceResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,14 +20,18 @@ class LoginViewModel @Inject constructor(
         private set // just modifiable by this viewmodel
 
     var errorMessage by mutableStateOf("")
-        private set
 
     // LOGIN RESPONSE
-    var loginReponse by mutableStateOf<Response<User>?>(null)
+    var loginReponse by mutableStateOf<ResourceResponse<AuthResponse>?>(null)
         private set
     fun login() = viewModelScope.launch {
         if (isValidForm()) {
-            loginReponse = Response.Loading
+            Log.d("@@@@@@@@@@@@@@@@@@@@@@@@@", "@@@@@@@@@@@@@@@@@@@@@@@@@")
+            Log.d("@@@@@@@@@@@@@@@@@@@@@@@@@", "@@@@@@@@@@@@@@@@@@@@@@@@@")
+            Log.d("Values", "${state.email} -  ${state.password}")
+            Log.d("@@@@@@@@@@@@@@@@@@@@@@@@@", "@@@@@@@@@@@@@@@@@@@@@@@@@")
+            Log.d("@@@@@@@@@@@@@@@@@@@@@@@@@", "@@@@@@@@@@@@@@@@@@@@@@@@@")
+            loginReponse = ResourceResponse.Loading
             val result = authUseCase.login(state.email, state.password)
             loginReponse = result
             Log.d("LoginViewModel", "Response: $loginReponse")
@@ -52,6 +56,6 @@ class LoginViewModel @Inject constructor(
             errorMessage = "Password must be at least 6 characters"
             return false
         }
-        return false
+        return true
     }
 }
