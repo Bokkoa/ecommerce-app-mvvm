@@ -7,6 +7,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.bokkoa.ecommerceappmvvm.presentation.components.DefaultTopBar
+import com.bokkoa.ecommerceappmvvm.presentation.screens.auth.register.components.Register
 import com.bokkoa.ecommerceappmvvm.presentation.screens.auth.register.components.RegisterContent
 import com.bokkoa.ecommerceappmvvm.presentation.ui.theme.EcommerceAppMVVMTheme
 
@@ -24,6 +25,8 @@ fun RegisterScreen(navController: NavHostController) {
     ) { paddingValues ->
         RegisterContent(paddingValues = paddingValues)
     }
+
+    Register(navController)
 }
 
 @Preview(showBackground = true, showSystemUi = true)

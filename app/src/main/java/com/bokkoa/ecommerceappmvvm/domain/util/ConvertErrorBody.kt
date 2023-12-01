@@ -14,10 +14,11 @@ object ConvertErrorBody {
             errorBody?.source()?.let {
                 val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
                 val moshiAdapter = moshi.adapter(ErrorResponse::class.java)
+                Log.d("Error from backend", it.toString())
                 moshiAdapter.fromJson(it)
             }
-        } catch(e: Exception) {
-            Log.d("ConvertErrorBody", "Error: " + e.message)
+        } catch (e: Exception) {
+            Log.d("ConvertErrorBody", "Error: " + e.message.toString())
             null
         }
     }

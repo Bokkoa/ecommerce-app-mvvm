@@ -54,6 +54,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
     LaunchedEffect(key1 = vm.errorMessage){
         if (vm.errorMessage != "") {
             Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
+            vm.errorMessage = ""
         }
     }
 
@@ -190,7 +191,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                         modifier = Modifier.fillMaxWidth().height(50.dp),
                         text = "CONFIRM",
                         onClick = {
-                            vm.validateForm()
+                            vm.register()
                         },
                     )
                 }

@@ -26,11 +26,6 @@ class LoginViewModel @Inject constructor(
         private set
     fun login() = viewModelScope.launch {
         if (isValidForm()) {
-            Log.d("@@@@@@@@@@@@@@@@@@@@@@@@@", "@@@@@@@@@@@@@@@@@@@@@@@@@")
-            Log.d("@@@@@@@@@@@@@@@@@@@@@@@@@", "@@@@@@@@@@@@@@@@@@@@@@@@@")
-            Log.d("Values", "${state.email} -  ${state.password}")
-            Log.d("@@@@@@@@@@@@@@@@@@@@@@@@@", "@@@@@@@@@@@@@@@@@@@@@@@@@")
-            Log.d("@@@@@@@@@@@@@@@@@@@@@@@@@", "@@@@@@@@@@@@@@@@@@@@@@@@@")
             loginReponse = ResourceResponse.Loading
             val result = authUseCase.login(state.email, state.password)
             loginReponse = result
