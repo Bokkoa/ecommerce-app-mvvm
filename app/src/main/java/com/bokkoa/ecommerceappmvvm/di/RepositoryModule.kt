@@ -2,6 +2,7 @@ package com.bokkoa.ecommerceappmvvm.di
 
 import android.annotation.SuppressLint
 import com.bokkoa.ecommerceappmvvm.data.repository.AuthRepositoryImpl
+import com.bokkoa.ecommerceappmvvm.data.repository.dataSource.AuthLocalDataSource
 import com.bokkoa.ecommerceappmvvm.data.repository.dataSource.AuthRemoteDataSource
 import com.bokkoa.ecommerceappmvvm.domain.repository.AuthRepository
 import dagger.Module
@@ -15,5 +16,8 @@ object RepositoryModule {
 
     @SuppressLint("NewApi")
     @Provides
-    fun provideAuthRepository(authRemoteDataSource: AuthRemoteDataSource): AuthRepository = AuthRepositoryImpl(authRemoteDataSource)
+    fun provideAuthRepository(
+        authRemoteDataSource: AuthRemoteDataSource,
+        authLocalDataSource: AuthLocalDataSource,
+    ): AuthRepository = AuthRepositoryImpl(authRemoteDataSource, authLocalDataSource)
 }

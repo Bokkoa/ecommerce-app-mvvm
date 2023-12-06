@@ -1,4 +1,3 @@
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -90,6 +89,12 @@ dependencies {
 
     // MOSHI
     implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+
+    // Data STORE
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // ASYNC IMAGE
+    implementation("io.coil-kt:coil-compose:2.5.0")
 }
 
 kapt {

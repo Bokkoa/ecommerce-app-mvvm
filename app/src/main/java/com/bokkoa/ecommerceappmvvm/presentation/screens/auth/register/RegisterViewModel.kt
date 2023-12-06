@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.bokkoa.ecommerceappmvvm.domain.model.AuthResponse
 import com.bokkoa.ecommerceappmvvm.domain.model.User
 import com.bokkoa.ecommerceappmvvm.domain.usecase.auth.AuthUseCase
-import com.bokkoa.ecommerceappmvvm.domain.util.ResourceResponse
+import com.bokkoa.ecommerceappmvvm.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,9 +20,12 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
     var state by mutableStateOf(RegisterState())
         private set
 
-    var registerResponse by mutableStateOf<ResourceResponse<AuthResponse>?>(null)
+    var registerResponse by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
 
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
     fun register() = viewModelScope.launch {
         if (isValidForm()) {
             val user = User(
@@ -32,7 +35,7 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
                 email = state.email,
                 password = state.password,
             )
-            registerResponse = ResourceResponse.Loading
+            registerResponse = Resource.Loading
             val result = authUseCase.register(user)
             registerResponse = result // DATA OR ERROR
         }

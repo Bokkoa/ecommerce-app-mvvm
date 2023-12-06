@@ -1,6 +1,8 @@
 package com.bokkoa.ecommerceappmvvm.domain.usecase.auth
 
-class AuthUseCase(
+data class AuthUseCase(
     val login: LoginUseCase,
-    val register: RegisterUseCase
+    val register: RegisterUseCase,
+    val saveSession: SaveSessionUseCase,
+    val getSessionData: GetSessionDataUseCase,
 )
